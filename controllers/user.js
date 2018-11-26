@@ -27,5 +27,10 @@ module.exports = function(router) {
         }
     });
 
+    router.post('/v2/Users', require('../middlewares/auth.js'), function(req, res) {
+        console.log(req.body)
+        res.json(req.body);
+    });
+
     return router;
 };
