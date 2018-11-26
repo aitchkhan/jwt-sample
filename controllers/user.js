@@ -27,9 +27,16 @@ module.exports = function(router) {
         }
     });
 
-    router.post('/v2/Users', require('../middlewares/auth.js'), function(req, res) {
+    router.post('/scim/v2/Users', require('../middlewares/auth.js'), function(req, res) {
         console.log(req.body)
         res.json(req.body);
+    });
+
+    router.get('/scim/v2/Users', require('../middlewares/auth.js'), function(req, res) {
+        console.log('I AM BAT MAN and a GET CALL USER');
+        res.status(404).json({
+            message: 'this is message'
+        });
     });
 
     return router;
