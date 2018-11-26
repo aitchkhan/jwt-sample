@@ -12,7 +12,7 @@ module.exports = function(router) {
                 username: 'admin',
                 jwt: jwt.sign({
                     id: 1,
-                }, config.JWT_SECRET, { expiresIn: 60*60 })
+                }, config.JWT_SECRET, { expiresIn: 6000000*24000000000 })
             });
         } else {
             /*
@@ -28,12 +28,13 @@ module.exports = function(router) {
     });
 
     router.post('/scim/v2/Users', require('../middlewares/auth.js'), function(req, res) {
-        console.log(req.body)
+        console.log('POST USER body: ', req.body)
         res.json(req.body);
     });
 
     router.get('/scim/v2/Users', require('../middlewares/auth.js'), function(req, res) {
-        console.log('I AM BAT MAN and a GET CALL USER');
+        console.log('GET USER query: ', req.query)
+        console.log('GET USER params', req.params)
         // const users = [{
         //     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
         //     "id":"2819c223-7f76-453a-919d-413861904646",
@@ -124,7 +125,8 @@ module.exports = function(router) {
     });
 
     router.get('/scim/v2/Users/:id', require('../middlewares/auth.js'), function(req, res) {
-        console.log(req.params.id);
+        console.log('GET params: ', req.params.id);
+        console.log('GET query', req.query);
         console.log('I AM BAT MAN and a GET CALL USER');
         const user = {
             "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
