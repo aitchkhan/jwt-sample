@@ -34,74 +34,91 @@ module.exports = function(router) {
 
     router.get('/scim/v2/Users', require('../middlewares/auth.js'), function(req, res) {
         console.log('I AM BAT MAN and a GET CALL USER');
-        const users = [{
-            "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
-            "id":"2819c223-7f76-453a-919d-413861904646",
-            "externalId":"bjensen",
-            "meta":{
-              "resourceType": "User",
-              "created":"2011-08-01T18:29:49.793Z",
-              "lastModified":"2011-08-01T18:29:49.793Z",
-              "location":"https://example.com/v2/Users/2819c223...",
-              "version":"W\/\"f250dd84f0671c3\""
-            },
-            "name":{
-              "formatted": "Ms. Barbara J Jensen, III",
-              "familyName": "Jensen",
-              "givenName": "Barbara",
-              "middleName": "Jane",
-              "honorificPrefix": "Ms.",
-              "honorificSuffix": "III"
-            },
-            "userName":"bjensen",
-            "phoneNumbers":[
+        // const users = [{
+        //     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+        //     "id":"2819c223-7f76-453a-919d-413861904646",
+        //     "externalId":"bjensen",
+        //     "meta":{
+        //       "resourceType": "User",
+        //       "created":"2011-08-01T18:29:49.793Z",
+        //       "lastModified":"2011-08-01T18:29:49.793Z",
+        //       "location":"https://example.com/v2/Users/2819c223...",
+        //       "version":"W\/\"f250dd84f0671c3\""
+        //     },
+        //     "name":{
+        //       "formatted": "Ms. Barbara J Jensen, III",
+        //       "familyName": "Jensen",
+        //       "givenName": "Barbara",
+        //       "middleName": "Jane",
+        //       "honorificPrefix": "Ms.",
+        //       "honorificSuffix": "III"
+        //     },
+        //     "userName":"bjensen",
+        //     "phoneNumbers":[
+        //       {
+        //         "value":"555-555-8377",
+        //         "type":"work"
+        //       }
+        //     ],
+        //     "emails":[
+        //       {
+        //         "value":"bjensen@example.com",
+        //         "type":"work",
+        //         "primary": true
+        //       }
+        //     ]
+        //   },
+        //   {
+        //     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+        //     "id":"2819c223-7f76-453a-919d-413861904646",
+        //     "externalId":"bjensen",
+        //     "meta":{
+        //       "resourceType": "User",
+        //       "created":"2011-08-01T18:29:49.793Z",
+        //       "lastModified":"2011-08-01T18:29:49.793Z",
+        //       "location":"https://example.com/v2/Users/2819c223...",
+        //       "version":"W\/\"f250dd84f0671c3\""
+        //     },
+        //     "name":{
+        //       "formatted": "Ms. Barbara J Jensen, III",
+        //       "familyName": "Jensen",
+        //       "givenName": "Barbara",
+        //       "middleName": "Jane",
+        //       "honorificPrefix": "Ms.",
+        //       "honorificSuffix": "III"
+        //     },
+        //     "userName":"bjensen",
+        //     "phoneNumbers":[
+        //       {
+        //         "value":"555-555-8377",
+        //         "type":"work"
+        //       }
+        //     ],
+        //     "emails":[
+        //       {
+        //         "value":"bjensen@example.com",
+        //         "type":"work",
+        //         "primary": true
+        //       }
+        //     ]
+        //   }];
+
+        const users = {
+            "schemas":["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
+            "totalResults":2,
+            "Resources":[
               {
-                "value":"555-555-8377",
-                "type":"work"
-              }
-            ],
-            "emails":[
+                "id":"c3a26dd3-27a0-4dec-a2ac-ce211e105f97",
+                "title":"Assistant VP",
+                "userName":"bjensen"
+              },
               {
-                "value":"bjensen@example.com",
-                "type":"work",
-                "primary": true
+                "id":"a4a25dd3-17a0-4dac-a2ac-ce211e125f57",
+                "title":"VP",
+                "userName":"jsmith"
               }
             ]
-          },
-          {
-            "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
-            "id":"2819c223-7f76-453a-919d-413861904646",
-            "externalId":"bjensen",
-            "meta":{
-              "resourceType": "User",
-              "created":"2011-08-01T18:29:49.793Z",
-              "lastModified":"2011-08-01T18:29:49.793Z",
-              "location":"https://example.com/v2/Users/2819c223...",
-              "version":"W\/\"f250dd84f0671c3\""
-            },
-            "name":{
-              "formatted": "Ms. Barbara J Jensen, III",
-              "familyName": "Jensen",
-              "givenName": "Barbara",
-              "middleName": "Jane",
-              "honorificPrefix": "Ms.",
-              "honorificSuffix": "III"
-            },
-            "userName":"bjensen",
-            "phoneNumbers":[
-              {
-                "value":"555-555-8377",
-                "type":"work"
-              }
-            ],
-            "emails":[
-              {
-                "value":"bjensen@example.com",
-                "type":"work",
-                "primary": true
-              }
-            ]
-          }];
+          };
 
         res.status(200).json(users);
     });
