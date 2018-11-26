@@ -106,19 +106,8 @@ module.exports = function(router) {
 
         const users = {
             "schemas":["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
-            "totalResults":2,
-            "Resources":[
-              {
-                "id":"c3a26dd3-27a0-4dec-a2ac-ce211e105f97",
-                "title":"Assistant VP",
-                "userName":"bjensen"
-              },
-              {
-                "id":"a4a25dd3-17a0-4dac-a2ac-ce211e125f57",
-                "title":"VP",
-                "userName":"jsmith"
-              }
-            ]
+            "totalResults":0,
+            "Resources":[]
           };
 
         res.status(200).json(users);
