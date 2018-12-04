@@ -18,5 +18,6 @@ app.use('/api', require('./controllers/helloWorld.js')(router));
  * Add the '/login' route handler
  */
 app.use('/', require('./controllers/user.js')(router));
+app.use('/', require('./controllers/groups')(router));
 
 module.exports = app;
